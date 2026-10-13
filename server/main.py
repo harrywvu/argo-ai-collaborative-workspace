@@ -49,5 +49,5 @@ def get_workspaces(db: Session = Depends(get_db)):
 
     # SELECT * FROM workspaces;
     workspaces = db.query(Workspace).all()
-    
+
     return workspaces
