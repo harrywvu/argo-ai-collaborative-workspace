@@ -43,3 +43,11 @@ def create_workspace(workspace: WorkspaceCreate, db: Session = Depends(get_db)):
     db.refresh(new_workspace)
 
     return new_workspace
+
+@app.get("/workspaces", response_model=list[WorkspaceResponse])
+def get_workspaces(db: Session = Depends(get_db)):
+
+    # SELECT * FROM workspaces;
+    workspaces = db.query(Workspace).all()
+    
+    return workspaces
